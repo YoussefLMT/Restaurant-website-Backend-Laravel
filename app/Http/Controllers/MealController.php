@@ -173,4 +173,16 @@ class MealController extends Controller
     }
 
 
+
+    public function getSpecificMeals()
+    {
+        $home_meals = Meal::limit(8)->get();
+
+        return response()->json([
+            'status' => 200,
+            'home_meals' => $home_meals
+        ]);
+    }
+
+
 }
