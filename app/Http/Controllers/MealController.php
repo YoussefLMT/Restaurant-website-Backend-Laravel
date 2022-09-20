@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\Validator;
 
 class MealController extends Controller
 {
+
+    public function getMeals()
+    {
+        $meals = Meal::all();
+
+        return response()->json([
+            'status' => 200,
+            'meals' => $meals
+        ]);
+    }
+
+
     
     public function addMeal(Request $request)
     {

@@ -19,6 +19,8 @@ use App\Http\Controllers\MealController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+
+Route::get('meals', [MealController::class, 'getMeals']);
 Route::post('add-meal', [MealController::class, 'addMeal']);
 
 
