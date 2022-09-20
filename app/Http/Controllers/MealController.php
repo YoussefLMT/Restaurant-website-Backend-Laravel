@@ -59,8 +59,31 @@ class MealController extends Controller
     
             return response()->json([
                 'status' => 200,
-                'message' => "Meal added successfully",
+                'message' => "Meal added successfully"
             ]);
+        }
+    }
+
+
+
+    public function getMeal($id)
+    {
+        $meal = Meal::find($id);
+
+        if($meal){
+
+            return response()->json([
+                'status' => 200,
+                'meal' => $meal,
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'Meal not found!',
+            ]);
+
         }
     }
 }
