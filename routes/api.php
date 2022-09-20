@@ -24,6 +24,7 @@ Route::get('meals', [MealController::class, 'getMeals']);
 Route::post('add-meal', [MealController::class, 'addMeal']);
 Route::get('get-meal/{id}', [MealController::class, 'getMeal']);
 Route::put('update-meal/{id}', [MealController::class, 'updateMeal']);
+Route::delete('delete-meal/{id}', [MealController::class, 'deleteMeal']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
