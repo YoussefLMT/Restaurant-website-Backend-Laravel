@@ -10,6 +10,18 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    public function getUsers()
+    {
+        $users = User::all();
+
+        return response()->json([
+            'status' => 200,
+            'users' => $users,
+        ]);
+    }
+
+    
     
     public function addUser(Request $request)
     {

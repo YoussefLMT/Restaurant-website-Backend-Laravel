@@ -29,6 +29,7 @@ Route::delete('delete-meal/{id}', [MealController::class, 'deleteMeal']);
 Route::get('specific-meals', [MealController::class, 'getSpecificMeals']);
 
 
+Route::get('users', [UserController::class, 'getUsers']);
 Route::post('add-user', [UserController::class, 'addUser']);
 
 
