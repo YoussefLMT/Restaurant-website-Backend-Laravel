@@ -31,6 +31,7 @@ Route::get('specific-meals', [MealController::class, 'getSpecificMeals']);
 
 Route::get('users', [UserController::class, 'getUsers']);
 Route::post('add-user', [UserController::class, 'addUser']);
+Route::get('get-user/{id}', [UserController::class, 'getUser']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
