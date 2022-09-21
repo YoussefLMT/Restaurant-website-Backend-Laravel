@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MealController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::get('get-meal/{id}', [MealController::class, 'getMeal']);
 Route::put('update-meal/{id}', [MealController::class, 'updateMeal']);
 Route::delete('delete-meal/{id}', [MealController::class, 'deleteMeal']);
 Route::get('specific-meals', [MealController::class, 'getSpecificMeals']);
+
+
+Route::post('add-user', [UserController::class, 'addUser']);
 
 
 Route::middleware(['auth:sanctum'])->group(function () {
