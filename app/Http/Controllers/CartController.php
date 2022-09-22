@@ -66,4 +66,27 @@ class CartController extends Controller
         ]);
     }
 
+
+    function removeMealFromCart($id){
+
+        $meal = Cart::find($id);
+
+        if($meal){
+
+            $meal->delete();
+    
+            return response()->json([
+                'status' => 200,
+                'message' => 'Deleted successfully',
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 404,
+                'message' => 'Meal not found!',
+            ]);
+        }
+    }
+
 }
