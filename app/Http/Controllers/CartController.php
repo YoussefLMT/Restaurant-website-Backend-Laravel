@@ -50,4 +50,20 @@ class CartController extends Controller
         ]);
     }
 
+
+    function getCartMeals()
+    {
+
+        $cart_meals = DB::table('cart')
+        ->join('meals', 'cart.meal_id', '=', 'meals.id')
+        ->where('cart.user_id', auth()->user()->id)
+        ->select('meals.*', 'cart.id as cart_id')
+        ->get();
+
+        return response()->json([
+            'status' => 200,
+            'cart_meals' => $cart_meals,
+        ]);
+    }
+
 }

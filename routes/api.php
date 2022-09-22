@@ -45,6 +45,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
     Route::get('cart-count', [CartController::class, 'getCartCount']);
+    Route::get('get-cart-meals', [CartController::class, 'getCartMeals']);
 
 });
 
