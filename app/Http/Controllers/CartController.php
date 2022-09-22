@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 class CartController extends Controller
 {
     
-    function addToCart(Request $request, $meal_id){
+    function addToCart(Request $request, $meal_id)
+    {
 
         $meal_in_cart = Cart::where('user_id', auth()->user()->id)
                 ->where('meal_id', $meal_id)
@@ -36,6 +37,17 @@ class CartController extends Controller
                 'message' => "Added to cart successfully",
             ]);
         }
+    }
+
+
+    function getCartCount()
+    {
+        $cart_count = Cart::where('user_id', auth()->user()->id)->count(); 
+
+        return response()->json([
+            'status' => 200,
+            'cart_count' => $cart_count,
+        ]);
     }
 
 }
