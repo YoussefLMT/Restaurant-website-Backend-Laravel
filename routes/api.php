@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,9 +37,13 @@ Route::put('update-user/{id}', [UserController::class, 'updateUser']);
 Route::delete('delete-user/{id}', [UserController::class, 'deleteUser']);
 
 
+
+
 Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('logout', [AuthController::class, 'logOut']);
+
+    Route::post('add-to-cart/{product_id}', [CartController::class, 'addToCart']);
 
 });
 
