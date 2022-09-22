@@ -27,7 +27,8 @@ class CartController extends Controller
 
             Cart::create([
                 'user_id'=> auth()->user()->id,
-                'meal_id'=> $meal_id
+                'meal_id'=> $meal_id,
+                'quantity'=> $request->quantity,
             ]);
             
             return response()->json([

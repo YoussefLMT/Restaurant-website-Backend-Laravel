@@ -17,7 +17,7 @@ class CreateCartTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('meal_id');
-            $table->integer('quantity');
+            $table->integer('quantity')->default(1);
             $table->timestamps();
         });
     }
