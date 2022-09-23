@@ -13,7 +13,7 @@ class CreatOrderMealsTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_mealss', function (Blueprint $table) {
+        Schema::create('order_meals', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id');
             $table->integer('meal_id');
@@ -28,6 +28,6 @@ class CreatOrderMealsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('order_meals');
     }
 }
