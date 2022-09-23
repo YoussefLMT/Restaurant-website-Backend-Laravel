@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MealController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('cart-count', [CartController::class, 'getCartCount']);
     Route::get('get-cart-meals', [CartController::class, 'getCartMeals']);
     Route::delete('remove-meal/{id}', [CartController::class, 'removeMealFromCart']);
+
+    Route::get('total-price', [OrderController::class, 'getOrderTotalPrice']);
 
 });
 
