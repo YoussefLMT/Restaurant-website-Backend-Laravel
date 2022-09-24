@@ -69,17 +69,17 @@ class OrderController extends Controller
 
         $user_id = auth()->user()->id;
 
-        $orders = DB::table('orders')
+        $user_orders = DB::table('orders')
         ->join('order_meals', 'order_meals.order_id', '=', 'orders.id')
         ->join('meals', 'order_meals.meal_id', '=', 'meals.id')
         ->where('orders.user_id', $user_id)
         ->get();
 
-        if($orders){
+        if($user_orders){
 
             return response()->json([
                 'status' => 200,
-                'orders' =>  $orders
+                'user_orders' =>  $user_orders
             ]);
 
         }else{
@@ -124,7 +124,7 @@ class OrderController extends Controller
     function updateOrderStatus(Request $request, $id){
 
         $order = Order::find($id);
-        
+
         if($order){
 
             $order->status = $request->status;
