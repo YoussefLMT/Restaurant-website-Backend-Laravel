@@ -26,4 +26,41 @@ class OrderController extends Controller
         ]);
     }
 
+
+
+    function placeOrder(Request $request){
+        
+        $user_id = auth()->user()->id;
+
+        $cart_data = Cart::where('user_id', $user_id)->get();
+
+        $total_price = DB::table('cart')
+        ->join('meals', 'cart.meal_id', '=', 'meals.id')
+        ->where('cart.user_id', $user_id)
+        ->sum(DB::raw('meals.price * cart.quantity'));
+
+        $order = Order::create([
+            'user_id' => $user_id,
+            'address' => $request->address,
+            'city' => $request->city,
+            'phone' => $request->address,
+            'total_amount' => $total_price
+        ]);
+
+        foreach($cart_data as $cart){
+
+            $order_meals = new OrderMeal;
+            $order_meals->order_id = $order->id;
+            $order_meals->meal_id = $cart->meal_id;
+            $order_meals->save();
+            
+            Cart::where('user_id', $user_id)->delete();
+        }
+        
+        return response()->json([
+            'status' => 200,
+            'message' => "Your order has been placed successfully",
+        ]);
+    }
+
 }

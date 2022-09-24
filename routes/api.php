@@ -50,6 +50,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('remove-meal/{id}', [CartController::class, 'removeMealFromCart']);
 
     Route::get('total-price', [OrderController::class, 'getOrderTotalPrice']);
+    Route::post('place-order', [OrderController::class, 'placeOrder']);
+
 
 });
 
