@@ -43,7 +43,7 @@ class OrderController extends Controller
             'user_id' => $user_id,
             'address' => $request->address,
             'city' => $request->city,
-            'phone' => $request->address,
+            'phone' => $request->phone,
             'total_amount' => $total_price
         ]);
 
