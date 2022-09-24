@@ -7,6 +7,7 @@ use App\Http\Controllers\MealController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\StatisticsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('get-order-meals/{id}', [OrderController::class, 'getOrderMeals']);
     Route::put('update-order-status/{id}', [OrderController::class, 'updateOrderStatus']);
 
+    Route::get('statistics', [StatisticsController::class, 'getTotalCount']);
 
 });
 
