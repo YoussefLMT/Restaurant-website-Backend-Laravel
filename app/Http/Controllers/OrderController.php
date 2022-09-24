@@ -63,4 +63,32 @@ class OrderController extends Controller
         ]);
     }
 
+
+
+    function getUserOrders(){
+
+        $user_id = auth()->user()->id;
+        
+        $orders = DB::table('orders')
+        ->join('order_meals', 'order_meals.order_id', '=', 'orders.id')
+        ->join('meals', 'order_meals.meal_id', '=', 'meals.id')
+        ->where('orders.user_id', $user_id)
+        ->get();
+
+        if($orders){
+
+            return response()->json([
+                'status' => 200,
+                'orders' =>  $orders
+            ]);
+
+        }else{
+
+            return response()->json([
+                'status' => 401,
+                'message' =>  "You don't have any order yet"
+            ]);
+        }
+    }
+
 }
