@@ -17,10 +17,7 @@ class StatisticsController extends Controller
         $usersCount = User::all()->count();
         $ordersCount = Order::all()->count();
 
-        $income = DB::table('orders')
-        ->join('order_meals', 'order_meals.order_id', '=', 'orders.id')
-        ->join('meals', 'order_meals.meal_id', '=', 'meals.id')
-        ->sum('meals.price');
+        $income = DB::table('orders')->sum('orders.total_amount');
 
         return response()->json([
             'status' => 200,
