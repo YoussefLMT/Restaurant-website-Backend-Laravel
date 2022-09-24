@@ -18,7 +18,7 @@ class OrderController extends Controller
         $total_price = DB::table('cart')
         ->join('meals', 'cart.meal_id', '=', 'meals.id')
         ->where('cart.user_id', $user_id)
-        ->sum('meals.price' , '*', 'cart.quantity');
+        ->sum(DB::raw('meals.price * cart.quantity'));
 
         return response()->json([
             'status' => 200,
