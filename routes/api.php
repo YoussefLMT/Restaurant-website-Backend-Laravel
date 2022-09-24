@@ -53,6 +53,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('place-order', [OrderController::class, 'placeOrder']);
     Route::get('get-user-orders', [OrderController::class, 'getUserOrders']);
     Route::get('get-orders', [OrderController::class, 'getAllOrders']);
+    Route::get('get-order-meals/{id}', [OrderController::class, 'getOrderMeals']);
 
 
 });

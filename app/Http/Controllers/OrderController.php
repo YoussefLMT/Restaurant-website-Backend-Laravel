@@ -104,4 +104,21 @@ class OrderController extends Controller
     }
 
 
+
+    function getOrderMeals($id){
+
+        $order_meals = DB::table('orders')
+        ->join('order_meals', 'order_meals.order_id', '=', 'orders.id')
+        ->join('meals', 'order_meals.meal_id', '=', 'meals.id')
+        ->where('orders.id', $id)
+        ->get();
+
+        return response()->json([
+            'status' => 200,
+            'order_meals' =>  $order_meals
+        ]);
+    }
+
+
+
 }
