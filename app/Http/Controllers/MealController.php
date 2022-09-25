@@ -21,6 +21,18 @@ class MealController extends Controller
     }
 
 
+
+    public function getMealsByCategory($category)
+    {
+        $meals = Meal::where('category', $category)->get();
+
+        return response()->json([
+            'status' => 200,
+            'meals' => $meals
+        ]);
+    }
+
+
     
     public function addMeal(Request $request)
     {
